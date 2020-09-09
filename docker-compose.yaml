@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  # database:
+  #   image: mysql
+  #   restart: always
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: sabia
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - ./.mysql:/var/lib/mysql
+  #   ports:
+  #     - "3306:3306"
+  #   container_name: sabia-db
+
+  api:
+    build: ./packages/api
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./packages/api:/api
+      - /api/node_modules
+    container_name: test-api
+
+  web:
+    build: ./packages/web
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./packages/web:/web
+      - /web/node_modules
+    container_name: test-web
