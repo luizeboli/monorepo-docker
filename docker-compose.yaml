@@ -7,29 +7,23 @@ services:
   #   command: --default-authentication-plugin=mysql_native_password
   #   environment:
   #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: sabia
+  #     MYSQL_DATABASE: root
   #   ports:
   #     - "3306:3306"
   #   volumes:
   #     - ./.mysql:/var/lib/mysql
   #   ports:
   #     - "3306:3306"
-  #   container_name: sabia-db
+  #   container_name: project-db
 
-  api:
-    build: ./packages/api
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./packages/api:/api
-      - /api/node_modules
-    container_name: test-api
-
-  web:
-    build: ./packages/web
+  project:
+    build: .
     ports:
       - "8080:8080"
+      - "3333:3333"
     volumes:
-      - ./packages/web:/web
-      - /web/node_modules
-    container_name: test-web
+      - .:/app
+      - /app/node_modules
+      - /app/packages/api/node_modules
+      - /app/packages/web/node_modules
+    container_name: sabia-platform
