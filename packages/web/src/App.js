@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import log from "@project/common";
 
 const App = () => {
   const [res, setRes] = useState({});
@@ -6,7 +7,10 @@ const App = () => {
   useEffect(() => {
     fetch("http://localhost:3333/")
       .then((res) => res.json())
-      .then((res) => setRes(res));
+      .then((res) => {
+        log(res);
+        setRes(res);
+      });
   }, []);
 
   return (
