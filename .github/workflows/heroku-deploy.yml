@@ -1,10 +1,10 @@
-name: Heroku container 
+name: Heroku container
 on:
   pull_request:
     types: [closed]
-    branches: 
+    branches:
       - api-staging
-    
+
 jobs:
   build:
     if: github.event.pull_request.merged == true
@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Push and Deploy to Heroku #set the whatever name you want to this step
         id: heroku
-        uses: jctaveras/heroku-deploy@v2.0.0  # use the latest version of the action
+        uses: jctaveras/heroku-deploy@v2.0.0 # use the latest version of the action
         with:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
-          dockerfile_path: 'packages/api' # set the path to the folder wher the Dokerfile is located
-          options: '' # Docker Build Options
+          dockerfile_path: "packages/api" # set the path to the folder wher the Dokerfile is located
+          options: "" # Docker Build Options
