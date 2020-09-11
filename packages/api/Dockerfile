@@ -2,12 +2,12 @@ FROM node:12-alpine
 
 WORKDIR /api
 
-COPY packages/api/package*.json /api/
+COPY package*.json /api/
 
 RUN npm ci --only=production
 
-COPY packages/api /api/
+COPY . /api/
 
-EXPOSE 80
+EXPOSE 3333
 CMD [ "node", "index.js" ]
 
