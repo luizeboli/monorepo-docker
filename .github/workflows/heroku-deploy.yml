@@ -1,10 +1,13 @@
-name: Heroku container deploy
-on: 
-  push:
+name: Heroku container 
+on:
+  pull_request:
+    types: [closed]
     branches: 
       - api-staging
+    
 jobs:
   build:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
