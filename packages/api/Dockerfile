@@ -8,6 +8,6 @@ RUN npm ci --only=production
 
 COPY . /api/
 
-EXPOSE 80
+EXPOSE 3333
 CMD [ "node", "index.js" ]
 
