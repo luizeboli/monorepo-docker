@@ -15,7 +15,7 @@ The web package is a React application built with [Snowpack](https://www.snowpac
 
 The common package is a custom `console.log` so we assert that Lerna can correctly handle dependencies in the container.
 
-> Common package has been removed from api as on the real world scenario that inspired this repo we'll not use the shared repo on the server
+> Common package has been removed from api as on the real world scenario that inspired this repo we'll not use the shared package on the server
 
 The whole application is inside a [Docker](https://www.docker.com/) container.
 
